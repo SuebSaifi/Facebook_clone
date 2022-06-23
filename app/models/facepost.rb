@@ -1,0 +1,2 @@
+class Facepost < ApplicationRecord
+end
