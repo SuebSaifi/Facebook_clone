@@ -1,0 +1,12 @@
+<div class="container">
+
+    <div class="media-content">
+        <%= render "faceposts/form" %>
+    </div>
+    
+    <%@faceposts.each do |face|%>
+    <%=face.post%>
+        
+    <% end %>
+    
+</div>
