@@ -1,7 +1,14 @@
-<%=simple_form_for(:facepost) do |f|%>
-<%=f.error_notification%>
-<div class="container">
-<%=f.input :post,label:"Post about it", input_html:{class:"textarea"},wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new post...",autofocus:true%>
-<%= f.button :submit , class:"button is-info"%>
+<div class="container my-4 " >
+<%= simple_form_for(@facepost) do |f|%>
+
+<div class="card">
+<div class="card-body">
+<%=f.input :post,label:"Post about it", input_html:{class:"textarea form-control" },wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new post...",autofocus:true%>
+<%# <%= f.hidden_field :current_user ,value: :id%>
+<%= f.button :submit , class:"btn btn-info my-3"%>
 </div>
+</div>
+
+
 <%end%>
+</div>

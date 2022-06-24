@@ -1,12 +1,20 @@
 <div class="container">
-
-    <div class="media-content">
-        <%= render "faceposts/form" %>
+<div class="card">
+<div class="card-body">
+<div class="my-3 scroll">
+    <%@faceposts.each do |post|%>
+    <div class="card my-3">
+    <div class="card-body my-3">
+    <%=post.post%>
+    <%=post.user_id%>
+    <%if current_user.id==  post.user_id%>
+    <%=link_to "edit",edit_facepost_path(post)%>     
+    <%= link_to "delete",post, method: :delete, data:{confirm:"Are you sure to delete this post"}%>
+    <%end%>
     </div>
-    
-    <%@faceposts.each do |face|%>
-    <%=face.post%>
-        
+    </div>
     <% end %>
     
 </div>
+</div>
+</div></div>

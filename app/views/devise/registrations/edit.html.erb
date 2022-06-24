@@ -1,43 +1,42 @@
+<div class="container mx-auto my-4"style="width:300px">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="d-flex justify-content-center flex-wrap">
+<div class="field my-2">
+    <%= f.input :name,label:"Name",required: true,input_html: {class: "form-control textarea"},wrapper: false,placeholder:"Enter Your name",label_html:{class:"label"}%>
   </div>
-
+ <div class="field my-2">
+      <%= f.input :username,required:true,input_html: {class:"form-control textarea"},wrapper: false,label_html:{class:"label"},placeholder:"Enter Username"%>
+  </div>
+   <div class="field my-2" >
+    <%= f.input :email,required: true,input_html: {class:"form-control textarea floatingInput"},wrapper: false,label_html:{class:"floatingInput"},placeholder:"Enter Your Email"%>
+  </div>
+  
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="field my-2">
+    <%=f.input :password ,required: true,input_html: {class:"form-control textarea"},wrapper: false,label_html:{class:"lable"},placeholder:"Want to change password" ,hint:("#{@minimum_password_length} characters minimum " if @minimum_password_length)%>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field my-2">
+    <%= f.input :password_confirmation,required: true,input_html: {class:"form-control textarea"},wrapper:false,placeholder:"Enter Your confirm Password",label_html:{class: "label" }%>
   </div>
-
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password %> 
+    <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control textarea" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" ,class:"btn btn-info my-3"%>
+  </div>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class:"btn btn-danger"%></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back,class:"btn btn-primary" %>
+</div>

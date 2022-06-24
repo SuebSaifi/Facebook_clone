@@ -1,18 +1,21 @@
 class FacepostsController < ApplicationController
   before_action :set_facepost, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!,except: [:index,:show]
   # GET /faceposts or /faceposts.json
   def index
     @faceposts = Facepost.all
+    @users=User.all
+    @facepost=Facepost.new
   end
 
   # GET /faceposts/1 or /faceposts/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /faceposts/new
   def new
-    @facepost = Facepost.new
+    @facepost = current_user.faceposts.build
+    
   end
 
   # GET /faceposts/1/edit
@@ -21,11 +24,11 @@ class FacepostsController < ApplicationController
 
   # POST /faceposts or /faceposts.json
   def create
-    @facepost = Facepost.new(facepost_params)
+    @facepost = current_user.faceposts.build(facepost_params)
 
     respond_to do |format|
       if @facepost.save
-        format.html { redirect_to facepost_url(@facepost), notice: "Facepost was successfully created." }
+        format.html { redirect_to root_path, notice: "Facepost was successfully created." }
         format.json { render :show, status: :created, location: @facepost }
       else
         format.html { render :new, status: :unprocessable_entity }

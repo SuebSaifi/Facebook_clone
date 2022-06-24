@@ -1,0 +1,4 @@
+<%@friends.each.current_user do |friend|%>
+<%=friend.email%>
+<%=link_to "remove",method: "delete" %>
+<%end%>

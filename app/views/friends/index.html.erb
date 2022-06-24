@@ -1,0 +1,13 @@
+<%current_user.friends.each do |friend|%>
+<%=friend.user.email%>
+<%=link_to "remove" ,friend,method: "delete" %>
+
+<%end%>
+<br/>
+<br/>
+<br/>
+
+
+
+<h1>Add Friends</h1>
+<%=render"form"%>

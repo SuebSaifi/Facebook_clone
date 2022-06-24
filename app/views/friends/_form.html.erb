@@ -1,0 +1,9 @@
+<p><% User.all.each do |friend|%>
+
+<%if current_user.id!=friend.id %>
+    <%# <%debugger%> 
+    <%if friend!=Friend.all%>    
+    <br/><%= friend.email %> &nbsp; <%= link_to 'Add as Friend' , friends_path(friend.id), :method => :post %>  
+<%end%>
+    <%end%>
+    <%end%>
