@@ -1,0 +1,17 @@
+<h2>Your Friends</h2>
+
+  <% current_user.friendships.each do |friendship| %>
+  <%=friendship.friend.email %> 
+  (<%= link_to "remove", friendship, :method => :delete %>)
+  <% end %>  
+
+
+<% User.all.each do |user| %>
+  <div class="user">
+    <p>
+      <strong><%=user.username %></strong>
+      <%= link_to "Add Friend", friendships_path(friend_id: user), :method => :post %>
+      
+    </p>
+  </div>
+<% end %>
