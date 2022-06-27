@@ -6,6 +6,8 @@ class FacepostsController < ApplicationController
     @faceposts = Facepost.all
     @users=User.all
     @facepost=Facepost.new
+    @like=Like.all
+    @comment=Comment.all
   end
 
   # GET /faceposts/1 or /faceposts/1.json
@@ -55,7 +57,7 @@ class FacepostsController < ApplicationController
     @facepost.destroy
 
     respond_to do |format|
-      format.html { redirect_to faceposts_url, notice: "Facepost was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "Facepost was successfully destroyed." }
       format.json { head :no_content }
     end
   end

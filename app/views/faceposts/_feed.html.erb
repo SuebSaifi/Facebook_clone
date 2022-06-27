@@ -11,7 +11,11 @@
     <%=link_to "edit",edit_facepost_path(post)%>     
     <%= link_to "delete",post, method: :delete, data:{confirm:"Are you sure to delete this post"}%>
     <%end%>
+     <%=link_to "like",facepost_create_path(post),method: :put%>
+     <%=post.likes.count%>
+   <%= render post.comments%>
     </div>
+    <%=render "comments/form"%>
     </div>
     <% end %>
     

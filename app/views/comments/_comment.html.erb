@@ -1,0 +1,6 @@
+<%Comment.all.each do |com|%>
+<p>
+<%=com.user.name%>: <%=com.comment%> 
+<%=com.created_at.time%>
+</p>
+<%end%>

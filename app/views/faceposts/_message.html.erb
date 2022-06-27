@@ -2,8 +2,9 @@
 <h3>Messages </h3>
 <div class="card">
 <div class="card-body">
-Hello
+<%current_user.friends.each do |friend|%>
+ <%=friend.email%> (Message)
+<%end%>
 </div>
 </div>
-
 </div>

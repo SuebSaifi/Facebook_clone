@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :faceposts
   has_many :friendships 
   has_many :friends, :through => :friendships
+  has_many :comments ,:through => :faceposts
 end

@@ -1,0 +1,13 @@
+<div class="container my-4 " >
+<%= simple_form_for(:comments) do |f|%>
+<div class="card">
+<div class="card-body">
+<%=f.input :comment,label:"Comment it", input_html:{class:"textarea form-control" },wrapper: false,lable_html:{class:"label"},placeholder:"Compose a new Comment...",autofocus:true%>
+<%# <%= f.hidden_field :current_user ,value: :id%>
+<%= f.button :submit , class:"btn btn-info my-3"%>
+</div>
+</div>
+
+
+<%end%>
+</div>
