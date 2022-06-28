@@ -4,32 +4,69 @@
 <div class="my-3 scroll">
     <%@faceposts.each do |post|%>
     <div class="card my-3">
-    <div class="card-body my-3">
+    <div class="card-body my-3 d-flex justify-content-between">
+   <div class="postdetail">
+    <b> <%=post.user.name[0].upcase+post.user.name[1..-1]%></b>: 
     <%=post.post%>
-    <%=post.user_id%>
-    <%if current_user.id==  post.user_id%>
-    <%=link_to "edit",edit_facepost_path(post)%>     
-    <%= link_to "delete",post, method: :delete, data:{confirm:"Are you sure to delete this post"}%>
+    <%# <%=post.user_id%>
+    </div>
+    <%if current_user.id ==  post.user_id%>
+    <div class="action  mx-3 d-flex ">
+    <div class='ed mx-2 '>
+    <%=link_to edit_facepost_path(post), class:"edit text-decoration-none" do%>
+    <i class="bi bi-pencil-square"></i>
     <%end%>
-     <%=link_to "like",facepost_create_path(post),method: :put%>
-     <%=post.likes.count%>
+    </div>
+    <div class='del'style="color:black;">
+    
+    <%= link_to post, method: :delete, data:{confirm:"Are you sure to delete this post"}, class:"delete text-decoration-none" do %>
+    <i class="bi bi-trash"></i>    
+    <%end%>
     </div>
     
-    <%=link_to "Comment",new_facepost_comment_path(post)%>
-     
-    
+    </div>
    
+    <%end%>
     
+    </div>
+    
+    
+    <div class="action mx-3 my-3 d-flex ">
+    <div class="like">
+    <span>
+     <%=link_to facepost_create_path(post),method: :put, class:"text-decoration-none" do%>
+     <%if post.likes%>
+     <i class="bi bi-hand-thumbs-up"style="width:10px; color:black;"></i>
+     <%end%>
+     <%end%>
+     </span>
+     <%=post.likes.count%>
+     </div>
+    <div class=" mx-3"  style="color:black;">
+    <span>
+    <%=link_to new_facepost_comment_path(post), class:"comment text-decoration-none" do %>
+     <i class="bi bi-chat " style="width:10px; color:black;"></i>
+     </span>
+    <%end%>
+     <%=post.comments.count%>
+    </div>
+    </div>
+   <hr>
+    <div class="mx-3">
+     <b>Comments:</b>
+     
      <%Comment.all.each do |comment|%>
      <%if (comment.facepost_id)==(post.id)%>
      <%# <%=post.id%> 
      <p class="mx-3">
-     <b><%=comment.user.name%>:</b> <%=comment.comment%>    
+     <b><%=comment.user.name%>:</b><br/> <%=comment.comment%>    
      <%# <%=link_to "like",facepost_create_path(comment),method: :put%>
+        <hr>
     </p>
    
     <% end %>
     <%end%>
+    </div>
      </div>
     <%end%>
 </div>

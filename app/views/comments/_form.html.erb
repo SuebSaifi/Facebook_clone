@@ -11,6 +11,8 @@
 <%#  %>
 <%# <%end%> 
 <%# </div> %>
+<div class="container">
+<div class="card card-body">    
 <%=form_for(@comment, url: facepost_comments_path) do |form|%>
 <p> 
 <%=form.hidden_field :user_id ,value: current_user.id%>
@@ -20,4 +22,5 @@
 <%=form.submit :comment, class:"btn btn-info my-3"%>    
 </p>
 <%end%> 
-     
+</div>
+     </div>

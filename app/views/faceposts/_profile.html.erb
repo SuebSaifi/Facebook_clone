@@ -1,7 +1,9 @@
 <div class="section" >
 <h3>Profile</h3>
 <div class="card">
-<div class="card-body">
+<div class="card-body d-flex">
+
+<div>
 <p>
 <b>Name:</b> <%=current_user.name%>
 </p><br/>
@@ -10,7 +12,12 @@
 </p><br/>
 <p>
 <b>Email:</b> <%=current_user.email%>
-<p><br/>
+<p>
+</div><div class='ed mx-4'>
+    <%=link_to edit_user_registration_path, class:"edit text-decoration-none " do%>
+    <i class="bi bi-pencil-square"></i>
+    <%end%>
+    </div>
 </div>
 </div>
 </div>

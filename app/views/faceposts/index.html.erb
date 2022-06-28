@@ -2,19 +2,13 @@
 <div class="container">
 <div class="columns d-flex justify-content-evenly">
 <%if user_signed_in?%>
-<div style="width:25%">
+<div class="pro"style="width:25%">
 <%= render "profile"%>
 </div>
 <div class="container d-flex justify-content-evenly">
-<%# <%= render "trends"%> 
-
 <div class="d-flex flex-column" style="width:60%">
 <%= render "faceposts/form" %>
-
-
 <%= render 'feed'%>
-
-
 </div>
 <div style="width:25%">
 <%=render "message"%>
