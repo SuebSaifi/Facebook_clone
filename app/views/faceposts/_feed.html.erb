@@ -13,12 +13,25 @@
     <%end%>
      <%=link_to "like",facepost_create_path(post),method: :put%>
      <%=post.likes.count%>
-   <%= render post.comments%>
     </div>
-    <%=render "comments/form"%>
-    </div>
-    <% end %>
     
+    <%=link_to "Comment",new_facepost_comment_path(post)%>
+     
+    
+   
+    
+     <%Comment.all.each do |comment|%>
+     <%if (comment.facepost_id)==(post.id)%>
+     <%# <%=post.id%> 
+     <p class="mx-3">
+     <b><%=comment.user.name%>:</b> <%=comment.comment%>    
+     <%# <%=link_to "like",facepost_create_path(comment),method: :put%>
+    </p>
+   
+    <% end %>
+    <%end%>
+     </div>
+    <%end%>
 </div>
 </div>
 </div></div>

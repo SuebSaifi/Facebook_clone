@@ -7,7 +7,7 @@ class FacepostsController < ApplicationController
     @users=User.all
     @facepost=Facepost.new
     @like=Like.all
-    @comment=Comment.all
+    @comments=Comment.all
   end
 
   # GET /faceposts/1 or /faceposts/1.json
@@ -17,17 +17,20 @@ class FacepostsController < ApplicationController
   # GET /faceposts/new
   def new
     @facepost = current_user.faceposts.build
-    
+    # @comment=current_user.comments.build
   end
-
+  def show
+    @facepost = Facepost.find(params[:id])
+    @comment=Comment.find(params[:id])
+  end
+  
   # GET /faceposts/1/edit
   def edit
   end
 
   # POST /faceposts or /faceposts.json
-  def create
-    @facepost = current_user.faceposts.build(facepost_params)
-
+  def create  
+  @facepost = current_user.faceposts.build(facepost_params)
     respond_to do |format|
       if @facepost.save
         format.html { redirect_to root_path, notice: "Facepost was successfully created." }
@@ -42,6 +45,7 @@ class FacepostsController < ApplicationController
   # PATCH/PUT /faceposts/1 or /faceposts/1.json
   def update
     respond_to do |format|
+    
       if @facepost.update(facepost_params)
         format.html { redirect_to facepost_url(@facepost), notice: "Facepost was successfully updated." }
         format.json { render :show, status: :ok, location: @facepost }
@@ -54,8 +58,9 @@ class FacepostsController < ApplicationController
 
   # DELETE /faceposts/1 or /faceposts/1.json
   def destroy
+  # debugger
     @facepost.destroy
-
+    # @comment.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Facepost was successfully destroyed." }
       format.json { head :no_content }
