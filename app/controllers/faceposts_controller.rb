@@ -8,6 +8,7 @@ class FacepostsController < ApplicationController
     @facepost=Facepost.new
     @like=Like.all
     @comments=Comment.all
+    @users=User.all
   end
 
   # GET /faceposts/1 or /faceposts/1.json
