@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.stnav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: inset;
+    box-shadow: 0px -10px 20px;
+}

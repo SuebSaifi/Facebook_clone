@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :faceposts do
   # resources :likes
   put "/create", to: "likes#create"
-  resources :comments
+  resources :comments do 
+  delete "/", to: "comments#destroy"
+  put "/",to: "comments#update"
+  end   
   end
   root "faceposts#index"
   resources :friendships

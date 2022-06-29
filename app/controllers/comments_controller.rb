@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+# before_action :set_comment,only: %i[show edit update destroy]
   def index
     @comments = Comment.all
     @faceposts=Facepost.all
@@ -20,8 +21,6 @@ class CommentsController < ApplicationController
   #     @comment.destroy
   #     redirect_to facepost_path(@post), status: 303
   # end 
-      
-                    
   # end
    def create
   #  debugger
@@ -37,8 +36,8 @@ class CommentsController < ApplicationController
      end
    end
   #  def update
-  #    @comment = Comment.find(params[:id])
-  #      if @comment.update_attributes(params[:comment])
+  #    @comment = Comment.find(params["comment_id"])
+  #      if @comment.update(params[:comment])
   #        flash[:success] = "Comment was successfully updated"
   #        redirect_to @facepost
   #      else
@@ -49,16 +48,22 @@ class CommentsController < ApplicationController
   #  def show
   #    @comment = Comment.find(params[:id])
   #  end
+   def show
+     @comment = Comment.find(params[:id])
+   end
    
    def destroy
-     @comment = Comment.find(params[:id])
+    # debugger
+    # @comment = Comment.find(params[:id])
+    @comment = Comment.find(params["comment_id"])
+    
      if @comment.destroy
        flash[:success] = 'Comment was successfully deleted.'
-       redirect_to @facepost
+       redirect_to root_path
      else
        flash[:error] = 'Something went wrong'
        redirect_to comments_url
-     end
+     end  
    end
    private
    

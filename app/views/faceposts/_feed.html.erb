@@ -54,16 +54,24 @@
    <hr>
     <div class="mx-3">
      <b>Comments:</b>
+     <hr>
      
      <%Comment.all.each do |comment|%>
      <%if (comment.facepost_id)==(post.id)%>
      <%# <%=post.id%> 
+     <div class="card-body my-3 d-flex justify-content-between">
      <p class="mx-3">
      <b><%=comment.user.name%>:</b><br/> <%=comment.comment%>    
-     <%# <%=link_to "like",facepost_create_path(comment),method: :put%>
-        <hr>
-    </p>
-   
+    </p>   
+     <%if comment.user.id==current_user.id%>
+     <%# <%=link_to "edit",facepost_comment_path(comment_id: comment,facepost_id: post),method: :put%>
+     <%=link_to facepost_comment_path(comment_id: comment,facepost_id: post),method: :delete , data:{confirm:"Are you sure to delete this post"}, class:"delete text-decoration-none" do%>
+        <i class="bi bi-trash"></i>    
+     <%end%>
+     <%end%>       
+    </div>
+     <hr>
+        
     <% end %>
     <%end%>
     </div>
