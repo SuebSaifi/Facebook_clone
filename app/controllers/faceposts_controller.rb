@@ -48,7 +48,7 @@ class FacepostsController < ApplicationController
     respond_to do |format|
     
       if @facepost.update(facepost_params)
-        format.html { redirect_to facepost_url(@facepost), notice: "Facepost was successfully updated." }
+        format.html { redirect_to root_path, notice: "Facepost was successfully updated." }
         format.json { render :show, status: :ok, location: @facepost }
       else
         format.html { render :edit, status: :unprocessable_entity }
